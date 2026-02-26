@@ -1,0 +1,396 @@
+/* OverlayDemo.module.css — стили для демо-страницы overlay */
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 4rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  text-align: left;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+
+.pageHeader {
+  border-bottom: 3px solid #4f46e5;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.pageHeader h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  color: #1e1b4b;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #374151;
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.badgeDev {
+  background: #4f46e5;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ─── Main ────────────────────────────────────────────────────────────────── */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ─── Intro ───────────────────────────────────────────────────────────────── */
+
+.intro {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+}
+
+.intro h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+  color: #1e1b4b;
+}
+
+.rulesList {
+  margin: 0;
+  padding-left: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 2rem;
+}
+
+.rulesList li {
+  font-size: 0.9rem;
+  color: #374151;
+  padding: 0.2rem 0;
+}
+
+.rulesList code {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.82rem;
+}
+
+/* ─── Demo sections ───────────────────────────────────────────────────────── */
+
+.demoSection {
+  border: 2px solid #fca5a5;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  background: #fff5f5;
+}
+
+.demoSection h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: #991b1b;
+}
+
+.demoSectionGood {
+  border: 2px solid #86efac;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  background: #f0fdf4;
+}
+
+.demoSectionGood h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: #166534;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 0.75rem;
+  font-style: italic;
+}
+
+.hint code {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-style: normal;
+  font-size: 0.82rem;
+}
+
+.fix {
+  font-size: 0.85rem;
+  color: #166534;
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0.75rem;
+  background: #dcfce7;
+  border-radius: 4px;
+}
+
+.fix code {
+  background: #bbf7d0;
+  color: #14532d;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.82rem;
+}
+
+/* ─── Images ──────────────────────────────────────────────────────────────── */
+
+.demoImg {
+  display: block;
+  border-radius: 4px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.thumbImg {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+/* ─── Forms ───────────────────────────────────────────────────────────────── */
+
+.formRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.goodForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 360px;
+  margin: 0.5rem 0;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.input {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #111827;
+  background: #fff;
+}
+
+.input:focus {
+  outline: 2px solid #4f46e5;
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+
+.btn {
+  padding: 0.45rem 1rem;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn:hover {
+  background: #dc2626;
+}
+
+.btnGood {
+  padding: 0.45rem 1rem;
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btnGood:hover {
+  background: #16a34a;
+}
+
+.btnNeutral {
+  padding: 0.45rem 1rem;
+  background: #6b7280;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btnNeutral:hover {
+  background: #4b5563;
+}
+
+/* Кнопка-иконка без текста — намеренное нарушение */
+.btnIcon {
+  width: 36px;
+  height: 36px;
+  background: #ef4444;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ─── Contrast violations ─────────────────────────────────────────────────── */
+
+/* Намеренно плохой контраст: светло-серый текст на белом фоне */
+.contrastBad {
+  background: #ffffff;
+  color: #c0c0c0; /* ~1.6:1 — явное нарушение */
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Намеренно плохой контраст: жёлтый на белом */
+.contrastBadYellow {
+  background: #ffffff;
+  color: #f5c300; /* ~1.4:1 — явное нарушение */
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* ─── Headings block ──────────────────────────────────────────────────────── */
+
+.headingsBlock {
+  border: 1px dashed #fca5a5;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.headingsBlock h2,
+.headingsBlock h5,
+.headingsBlock h6 {
+  margin: 0.25rem 0;
+}
+
+/* ─── Links ───────────────────────────────────────────────────────────────── */
+
+.linksBlock {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.emptyLink {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #fca5a5;
+  border-radius: 3px;
+}
+
+.link {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+
+/* ─── iframe ──────────────────────────────────────────────────────────────── */
+
+.iframe {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  display: block;
+}
+
+/* ─── Dynamic list ────────────────────────────────────────────────────────── */
+
+.dynamicList {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dynamicList li {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+/* ─── Dropdown content ────────────────────────────────────────────────────── */
+
+.dropdownContent {
+  padding: 0.75rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .rulesList {
+    grid-template-columns: 1fr;
+  }
+
+  .formRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

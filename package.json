@@ -18,7 +18,7 @@
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "ru-a11y-toolkit-eslint": "^1.0.2"
+    "ru-a11y-toolkit": "0.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
