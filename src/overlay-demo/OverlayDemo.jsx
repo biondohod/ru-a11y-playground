@@ -251,7 +251,7 @@ function DynamicContent() {
         Нажимай кнопки — overlay должен пересканировать DOM автоматически после изменений
       </p>
       <div className={styles.formRow}>
-        <button className={styles.btn} onClick={addBadItem} type="button">
+        <button className={styles.btnDanger} onClick={addBadItem} type="button">
           ❌ Добавить плохой элемент (img без alt)
         </button>
         <button className={styles.btnGood} onClick={addGoodItem} type="button">

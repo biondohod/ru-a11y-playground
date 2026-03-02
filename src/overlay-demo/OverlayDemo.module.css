@@ -225,7 +225,7 @@
 
 .btn {
   padding: 0.45rem 1rem;
-  background: #ef4444;
+  background: #ef4444; /* намеренно плохой контраст — используется только в секции с демо нарушений */
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -238,9 +238,25 @@
   background: #dc2626;
 }
 
+/* Доступная красная кнопка для управления демо — контраст #fff на #b91c1c: ~5.08:1 (WCAG AA ✅) */
+.btnDanger {
+  padding: 0.45rem 1rem;
+  background: #b91c1c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btnDanger:hover {
+  background: #991b1b;
+}
+
 .btnGood {
   padding: 0.45rem 1rem;
-  background: #22c55e;
+  background: #16a34a; /* контраст с #fff: ~4.54:1 — проходит WCAG AA */
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -250,7 +266,7 @@
 }
 
 .btnGood:hover {
-  background: #16a34a;
+  background: #15803d;
 }
 
 .btnNeutral {
