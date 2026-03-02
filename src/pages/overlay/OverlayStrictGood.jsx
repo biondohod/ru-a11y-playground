@@ -21,7 +21,7 @@ export default function OverlayStrictGood() {
             Overlay с <strong>preset=&quot;strict&quot;</strong> должен показать 0 нарушений.
           </p>
           <div className={styles.badge}>
-            <span className={styles.badgePreset} style={{ background: '#7c3aed' }}>strict</span>
+            <span className={styles.badgePreset} style={{ background: '#5B21B6' }}>strict</span>
             <span className={styles.badgeStatus + ' ' + styles.badgeStatusGood}>✅ 0 нарушений</span>
           </div>
         </header>

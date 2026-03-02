@@ -43,14 +43,14 @@ export default function OverlayStrictBad() {
     <>
       <NavBar />
       <main id="main" className={styles.page}>
-        <header className={styles.pageHeader} style={{ borderColor: '#7c3aed' }}>
+        <header className={styles.pageHeader} style={{ borderColor: '#5B21B6' }}>
           <h1>Overlay — strict / с нарушениями</h1>
           <p className={styles.subtitle}>
             Страница содержит нарушения для максимального пресета.
             Overlay работает с <strong>preset=&quot;strict&quot;</strong> — WCAG 2.1 AAA + best-practice + experimental.
           </p>
           <div className={styles.badge}>
-            <span className={styles.badgePreset} style={{ background: '#7c3aed' }}>strict</span>
+            <span className={styles.badgePreset} style={{ background: '#5B21B6' }}>strict</span>
             <span className={styles.badgeStatus + ' ' + styles.badgeStatusBad}>❌ с нарушениями</span>
           </div>
         </header>

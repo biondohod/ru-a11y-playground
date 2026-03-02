@@ -64,7 +64,7 @@
 }
 
 .badgeStatusBad  { background: #b91c1c; }
-.badgeStatusGood { background: #15803d; }
+.badgeStatusGood { background: #14532D; }
 
 /* ─── Main content ────────────────────────────────────────────────────────── */
 
@@ -233,7 +233,7 @@
 /* #15803d на #fff: 4.55:1 ✅ */
 .btnSuccess {
   padding: 0.45rem 1rem;
-  background: #15803d;
+  background: #14532D;
   color: #fff;
   border: none;
   border-radius: 4px;

@@ -90,7 +90,7 @@
 
 .groupLabel {
   font-size: 0.75rem;
-  color: #818cf8; /* indigo-400: контраст на #1e1b4b ~4.7:1 ✅ */
+  color: #C7D2FE; /* indigo-400: контраст на #1e1b4b ~4.7:1 ✅ */
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
