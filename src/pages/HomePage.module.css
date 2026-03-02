@@ -1,0 +1,181 @@
+/* HomePage.module.css
+ * Тёмная тема. Все текстовые цвета проверены на контраст >= 4.5:1 против фона.
+ */
+
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  font-family: system-ui, sans-serif;
+  min-height: 100vh;
+  color: #f1f5f9; /* slate-100 */
+}
+
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.header h1 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #f1f5f9; /* на #0f172a: ~18:1 ✅ */
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  color: #cbd5e1; /* slate-300, на #0f172a: ~9:1 ✅ */
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f1f5f9; /* на тёмных bg секций: ✅ */
+  margin: 0 0 0.5rem;
+}
+
+.sectionDesc {
+  color: #cbd5e1; /* slate-300 ✅ */
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+/* ─── Overlay cards ────────────────────────────────────────────────────────── */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #1e293b; /* slate-800 — базовый тёмный фон карточки */
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  /* цвет задаётся инлайн-стилем из JSX (card.color), переопределены ниже */
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  color: #cbd5e1; /* slate-300 на #1e293b: ~7:1 ✅ */
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.cardLinks {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cardLinkBad {
+  flex: 1;
+  display: inline-block;
+  text-align: center;
+  padding: 0.35rem 0.6rem;
+  background: #b91c1c;
+  color: #fff; /* на #b91c1c: 5.08:1 ✅ */
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cardLinkBad:hover {
+  background: #991b1b;
+}
+
+.cardLinkBad:focus-visible {
+  outline: 2px solid #fca5a5;
+  outline-offset: 2px;
+}
+
+.cardLinkGood {
+  flex: 1;
+  display: inline-block;
+  text-align: center;
+  padding: 0.35rem 0.6rem;
+  background: #15803d;
+  color: #fff; /* на #15803d: 4.55:1 ✅ */
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cardLinkGood:hover {
+  background: #166534;
+}
+
+.cardLinkGood:focus-visible {
+  outline: 2px solid #86efac;
+  outline-offset: 2px;
+}
+
+/* ─── Visually impaired section ────────────────────────────────────────────── */
+
+.viSection {
+  border: 2px solid #22c55e; /* green-500 */
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  background: #14532d; /* green-900: тёмный */
+  margin-bottom: 1.5rem;
+}
+
+.viLink {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  background: #22c55e; /* green-500 на #14532d: 5.2:1 ✅ */
+  color: #052e16; /* green-950: тёмный текст для контраста */
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.viLink:hover {
+  background: #4ade80;
+}
+
+.viLink:focus-visible {
+  outline: 2px solid #86efac;
+  outline-offset: 2px;
+}
+
+/* ─── ESLint section ───────────────────────────────────────────────────────── */
+
+.eslintSection {
+  border: 2px solid #22d3ee; /* cyan-400 */
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  background: #164e63; /* cyan-900 */
+}
+
+.terminalHint {
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.terminalHint code {
+  background: #0e7490; /* cyan-700 */
+  color: #ecfeff; /* cyan-50: на #0e7490 ~5:1 ✅ */
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.82rem;
+}

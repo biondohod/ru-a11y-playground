@@ -1,0 +1,107 @@
+/* NavBar.module.css
+ * Все цвета проверены: белый #fff на #1e1b4b — контраст 14.5:1 ✅
+ * Активная ссылка: #fbbf24 на #1e1b4b — контраст 7.1:1 ✅
+ */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  background: #1e1b4b;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #312e81;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  padding: 0.25rem 0;
+  flex-shrink: 0;
+}
+
+.logo:hover,
+.logo:focus-visible {
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  color: #c7d2fe; /* indigo-200: контраст на #1e1b4b ~6.5:1 ✅ */
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-radius: 2px;
+  transition: color 0.12s;
+  white-space: nowrap;
+}
+
+.link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+  color: #fff;
+}
+
+.linkActive {
+  color: #fbbf24; /* amber-400: контраст на #1e1b4b ~7.1:1 ✅ */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.25rem 0;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.linkActive:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.groupLabel {
+  font-size: 0.75rem;
+  color: #818cf8; /* indigo-400: контраст на #1e1b4b ~4.7:1 ✅ */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.subLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

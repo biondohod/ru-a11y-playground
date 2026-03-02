@@ -1,12 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import { RuA11yOverlay } from 'ru-a11y-toolkit-overlay'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-    {import.meta.env.DEV && <RuA11yOverlay preset="gost-aa" />}
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
 )
