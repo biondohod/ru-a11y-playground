@@ -19,6 +19,53 @@ npm run dev
 
 ---
 
+## CLI-демо (`demo/cli`)
+
+В playground добавлен воспроизводимый сценарий для локального `ru-a11y` CLI из соседнего репозитория `../ru-a11y`.
+
+### Что входит в демо
+
+- Списки URL для трех сценариев:
+  - `demo/cli/urls.bad.txt`
+  - `demo/cli/urls.good.txt`
+  - `demo/cli/urls.mixed.txt`
+- Автогенерация отчетов:
+  - JSON: `demo/cli/reports/<scenario>/json/ru-a11y-report.json`
+  - Markdown: `demo/cli/reports/<scenario>/ru-a11y-report.md`
+
+### Скрипты
+
+```bash
+npm run cli:build:local  # собрать локальный CLI в ../ru-a11y/packages/cli/dist
+npm run cli:demo         # прогнать bad + good + mixed
+
+npm run cli:demo:bad
+npm run cli:demo:good
+npm run cli:demo:mixed
+
+npm run cli:scan:json    # одиночный mixed-скан в JSON
+npm run cli:report:md    # конвертация JSON -> Markdown для mixed
+```
+
+### Как запускать (PowerShell, 2 терминала)
+
+В первом терминале поднимите playground:
+
+```powershell
+npm run dev
+```
+
+Во втором терминале выполните demo:
+
+```powershell
+npm run cli:build:local
+npm run cli:demo
+```
+
+После выполнения смотрите результаты в `demo/cli/reports`.
+
+---
+
 ## Overlay-демо (`src/overlay-demo`)
 
 Папка `src/overlay-demo` содержит демонстрацию работы пакета `ru-a11y-overlay` — визуального оверлея, который в реальном времени анализирует страницу с помощью [axe-core](https://github.com/dequelabs/axe-core) и отображает найденные нарушения доступности прямо поверх проблемных элементов.

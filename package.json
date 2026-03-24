@@ -13,13 +13,20 @@
     "lint:aa:good": "eslint src/eslint-preset-demo/level-aa/good",
     "lint:aaa:bad": "eslint src/eslint-preset-demo/level-aaa/bad",
     "lint:aaa:good": "eslint src/eslint-preset-demo/level-aaa/good",
+    "cli:build:local": "npm --prefix ../ru-a11y run build --workspace packages/cli",
+    "cli:scan:json": "node ../ru-a11y/packages/cli/dist/cli.js --urls-file demo/cli/urls.mixed.txt --standard gost-aa --format json --output demo/cli/reports/mixed/json",
+    "cli:report:md": "node scripts/cli-json-to-md.mjs demo/cli/reports/mixed/json/ru-a11y-report.json demo/cli/reports/mixed/ru-a11y-report.md \"ru-a11y CLI demo (mixed)\"",
+    "cli:demo:bad": "node scripts/run-cli-demo.mjs bad",
+    "cli:demo:good": "node scripts/run-cli-demo.mjs good",
+    "cli:demo:mixed": "node scripts/run-cli-demo.mjs mixed",
+    "cli:demo": "node scripts/run-cli-demo.mjs all",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1",
-    "ru-a11y-toolkit": "0.5.0"
+    "ru-a11y-toolkit": "0.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

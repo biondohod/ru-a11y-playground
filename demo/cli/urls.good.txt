@@ -1,0 +1,5 @@
+# Pages with mostly corrected accessibility patterns
+http://localhost:5173/overlay/recommended/good
+http://localhost:5173/overlay/gost-aa/good
+http://localhost:5173/overlay/strict/good
+

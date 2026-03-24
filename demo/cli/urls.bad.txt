@@ -1,0 +1,5 @@
+# Pages with intentional accessibility issues
+http://localhost:5173/overlay/recommended/bad
+http://localhost:5173/overlay/gost-aa/bad
+http://localhost:5173/overlay/strict/bad
+

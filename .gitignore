@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# CLI demo generated reports
+demo/cli/reports/*
+!demo/cli/reports/.gitkeep
+
