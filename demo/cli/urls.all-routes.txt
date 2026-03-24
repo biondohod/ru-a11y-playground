@@ -1,0 +1,10 @@
+# Full list of demo routes from src/App.jsx
+http://localhost:5173/
+http://localhost:5173/overlay/recommended/bad
+http://localhost:5173/overlay/recommended/good
+http://localhost:5173/overlay/gost-aa/bad
+http://localhost:5173/overlay/gost-aa/good
+http://localhost:5173/overlay/strict/bad
+http://localhost:5173/overlay/strict/good
+http://localhost:5173/visually-impaired
+

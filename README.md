@@ -29,9 +29,11 @@ npm run dev
   - `demo/cli/urls.bad.txt`
   - `demo/cli/urls.good.txt`
   - `demo/cli/urls.mixed.txt`
+  - `demo/cli/urls.all-routes.txt` (все маршруты из `src/App.jsx`)
 - Автогенерация отчетов:
   - JSON: `demo/cli/reports/<scenario>/json/ru-a11y-report.json`
   - Markdown: `demo/cli/reports/<scenario>/ru-a11y-report.md`
+  - HTML: `demo/cli/reports/<scenario>/ru-a11y-report.html`
 
 ### Скрипты
 
@@ -42,9 +44,12 @@ npm run cli:demo         # прогнать bad + good + mixed
 npm run cli:demo:bad
 npm run cli:demo:good
 npm run cli:demo:mixed
+npm run cli:demo:all-routes  # один общий прогон по всем страницам
 
 npm run cli:scan:json    # одиночный mixed-скан в JSON
 npm run cli:report:md    # конвертация JSON -> Markdown для mixed
+npm run cli:report:html  # конвертация JSON -> красивый HTML для mixed
+npm run cli:report:all   # сразу Markdown + HTML для mixed
 ```
 
 ### Как запускать (PowerShell, 2 терминала)
@@ -63,6 +68,15 @@ npm run cli:demo
 ```
 
 После выполнения смотрите результаты в `demo/cli/reports`.
+
+Важно: `cli:demo:mixed` специально проверяет только 4 URL из `urls.mixed.txt`.
+Если нужен один общий отчет по всем страницам, используйте `npm run cli:demo:all-routes`.
+
+Для презентации удобнее открывать `demo/cli/reports/<scenario>/ru-a11y-report.html` в браузере:
+
+- есть сводка по прогону (сколько страниц с нарушениями и без);
+- каждая страница помечена статусом (`Без нарушений`, `N нарушений`, `Ошибка аудита`);
+- нарушения показаны карточками с severity, селектором, правилами и рекомендациями.
 
 ---
 

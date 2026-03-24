@@ -1,7 +1,7 @@
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
-import { renderMarkdownReport } from './cli-json-to-md.mjs';
+import { renderHtmlReport, renderMarkdownReport } from './cli-json-to-md.mjs';
 
 const SCENARIOS = {
   bad: {
@@ -19,6 +19,11 @@ const SCENARIOS = {
     reportDir: 'demo/cli/reports/mixed',
     title: 'ru-a11y CLI demo (mixed)',
   },
+  'all-routes': {
+    urlsFile: 'demo/cli/urls.all-routes.txt',
+    reportDir: 'demo/cli/reports/all-routes',
+    title: 'ru-a11y CLI demo (all routes)',
+  },
 };
 
 const projectRoot = resolve(dirname(process.argv[1]), '..');
@@ -30,6 +35,7 @@ function runCliScenario(name) {
   const jsonDir = resolve(projectRoot, scenario.reportDir, 'json');
   const jsonReportPath = resolve(jsonDir, 'ru-a11y-report.json');
   const markdownReportPath = resolve(projectRoot, scenario.reportDir, 'ru-a11y-report.md');
+  const htmlReportPath = resolve(projectRoot, scenario.reportDir, 'ru-a11y-report.html');
 
   process.stdout.write(`\n[cli-demo] Running scenario: ${name}\n`);
 
@@ -61,19 +67,23 @@ function runCliScenario(name) {
   return {
     jsonReportPath,
     markdownReportPath,
+    htmlReportPath,
     title: scenario.title,
   };
 }
 
-async function buildMarkdown(reportInfo) {
+async function buildTextReports(reportInfo) {
   const payload = await readFile(reportInfo.jsonReportPath, 'utf-8');
   const report = JSON.parse(payload);
   const markdown = renderMarkdownReport(report, reportInfo.title);
+  const html = renderHtmlReport(report, reportInfo.title);
 
   await mkdir(dirname(reportInfo.markdownReportPath), { recursive: true });
   await writeFile(reportInfo.markdownReportPath, markdown, 'utf-8');
+  await writeFile(reportInfo.htmlReportPath, html, 'utf-8');
 
   process.stdout.write(`[cli-demo] Markdown report: ${reportInfo.markdownReportPath}\n`);
+  process.stdout.write(`[cli-demo] HTML report: ${reportInfo.htmlReportPath}\n`);
 }
 
 async function main() {
@@ -86,7 +96,7 @@ async function main() {
         : null;
 
   if (!scenarioNames) {
-    process.stderr.write('Usage: node scripts/run-cli-demo.mjs [bad|good|mixed|all]\n');
+    process.stderr.write('Usage: node scripts/run-cli-demo.mjs [bad|good|mixed|all-routes|all]\n');
     process.exit(1);
   }
 
@@ -104,7 +114,7 @@ async function main() {
 
   for (const name of scenarioNames) {
     const reportInfo = runCliScenario(name);
-    await buildMarkdown(reportInfo);
+    await buildTextReports(reportInfo);
   }
 
   process.stdout.write('\n[cli-demo] Done. Reports are available in demo/cli/reports/*\n');
