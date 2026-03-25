@@ -24,10 +24,19 @@ const SCENARIOS = {
     reportDir: 'demo/cli/reports/all-routes',
     title: 'ru-a11y CLI demo (all routes)',
   },
+  'all-routes-full': {
+    urlsFile: 'demo/cli/urls.all-routes.txt',
+    reportDir: 'demo/cli/reports/all-routes-full',
+    title: 'ru-a11y CLI demo (all routes + eslint source)',
+    withEslint: true,
+    eslintTargets: 'src/**/*.{js,jsx}',
+    eslintConfigFile: 'eslint.config.js',
+  },
 };
 
 const projectRoot = resolve(dirname(process.argv[1]), '..');
 const localCliPath = resolve(projectRoot, '../ru-a11y/packages/cli/dist/cli.js');
+const DEFAULT_ALL_SCENARIOS = ['bad', 'good', 'mixed', 'all-routes'];
 
 function runCliScenario(name) {
   const scenario = SCENARIOS[name];
@@ -39,21 +48,35 @@ function runCliScenario(name) {
 
   process.stdout.write(`\n[cli-demo] Running scenario: ${name}\n`);
 
+  const cliArgs = [
+    localCliPath,
+    '--urls-file',
+    urlsFile,
+    '--standard',
+    'gost-aa',
+    '--format',
+    'json',
+    '--output',
+    jsonDir,
+    '--concurrency',
+    '1',
+  ];
+
+  if (scenario.withEslint) {
+    cliArgs.push(
+      '--with-eslint',
+      '--project-root',
+      projectRoot,
+      '--eslint-targets',
+      scenario.eslintTargets,
+      '--eslint-config',
+      resolve(projectRoot, scenario.eslintConfigFile),
+    );
+  }
+
   const result = spawnSync(
     process.execPath,
-    [
-      localCliPath,
-      '--urls-file',
-      urlsFile,
-      '--standard',
-      'gost-aa',
-      '--format',
-      'json',
-      '--output',
-      jsonDir,
-      '--concurrency',
-      '1',
-    ],
+    cliArgs,
     {
       cwd: projectRoot,
       stdio: 'inherit',
@@ -90,13 +113,13 @@ async function main() {
   const target = process.argv[2] ?? 'all';
   const scenarioNames =
     target === 'all'
-      ? Object.keys(SCENARIOS)
+      ? DEFAULT_ALL_SCENARIOS
       : target in SCENARIOS
         ? [target]
         : null;
 
   if (!scenarioNames) {
-    process.stderr.write('Usage: node scripts/run-cli-demo.mjs [bad|good|mixed|all-routes|all]\n');
+    process.stderr.write('Usage: node scripts/run-cli-demo.mjs [bad|good|mixed|all-routes|all-routes-full|all]\n');
     process.exit(1);
   }
 

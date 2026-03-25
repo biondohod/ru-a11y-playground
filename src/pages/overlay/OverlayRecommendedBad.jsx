@@ -25,6 +25,10 @@ export default function OverlayRecommendedBad() {
           </div>
         </header>
         <div className={styles.main}>
+          <section className={styles.sectionBad}>
+            <h2>ESLint marker (file-level)</h2>
+            <img src="https://picsum.photos/seed/overlay-rec-eslint/64/40" className={styles.demoImg} />
+          </section>
           <ImgNoAlt />
           <FormNoLabel />
           <EmptyButton />

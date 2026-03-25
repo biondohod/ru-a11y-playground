@@ -55,6 +55,10 @@ export default function OverlayStrictBad() {
           </div>
         </header>
         <div className={styles.main}>
+          <section className={styles.sectionBad}>
+            <h2>ESLint marker (file-level)</h2>
+            <img src="https://picsum.photos/seed/overlay-strict-eslint/64/40" className={styles.demoImg} />
+          </section>
           <section className={styles.sectionNeutral}>
             <h2>Что дополнительно проверяет strict vs gost-aa</h2>
             <ul className={styles.rulesList}>

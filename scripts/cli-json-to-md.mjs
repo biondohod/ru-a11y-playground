@@ -26,12 +26,34 @@ function getSeverityClass(severity) {
   return 'sev-minor';
 }
 
+function isEslintEntity(url) {
+  return String(url ?? '').startsWith('eslint://');
+}
+
+function getEntityKind(url) {
+  return isEslintEntity(url) ? 'file' : 'page';
+}
+
+function getEntityLabel(url) {
+  return getEntityKind(url) === 'file' ? 'Файл' : 'Страница';
+}
+
+function getEntityValue(url) {
+  if (!isEslintEntity(url)) {
+    return String(url ?? '');
+  }
+
+  return String(url).replace(/^eslint:\/\//, '');
+}
+
 function normalizeReport(report) {
   const pages = Array.isArray(report?.pages)
     ? report.pages.map((page) => {
         const issues = Array.isArray(page.issues) ? page.issues : [];
         return {
           ...page,
+          entityKind: getEntityKind(page.url),
+          displayUrl: getEntityValue(page.url),
           issues,
           issueCount: issues.length,
           hasError: Boolean(page.error),
@@ -47,6 +69,8 @@ function normalizeReport(report) {
     scannedPages: report?.scannedPages ?? pages.length,
     totalIssues,
     pages,
+    scannedFiles: pages.filter((page) => page.entityKind === 'file').length,
+    scannedWebPages: pages.filter((page) => page.entityKind === 'page').length,
     pagesWithIssues: pages.filter((page) => page.issueCount > 0).length,
     pagesWithoutIssues: pages.filter((page) => page.isClean).length,
     pagesWithErrors: pages.filter((page) => page.hasError).length,
@@ -64,11 +88,13 @@ export function renderMarkdownReport(report, title = 'ru-a11y CLI report') {
   lines.push('');
   lines.push(`- Generated at: ${data.generatedAt}`);
   lines.push(`- Scanned pages: ${data.scannedPages}`);
+  lines.push(`- Scanned web pages: ${data.scannedWebPages}`);
+  lines.push(`- Scanned files: ${data.scannedFiles}`);
   lines.push(`- Total issues: ${data.totalIssues}`);
   lines.push('');
 
   for (const page of data.pages) {
-    lines.push(`## ${page.url}`);
+    lines.push(`## ${getEntityLabel(page.url)}: ${page.displayUrl}`);
 
     if (page.error) {
       lines.push('');
@@ -83,7 +109,7 @@ export function renderMarkdownReport(report, title = 'ru-a11y CLI report') {
 
     if (!page.issues || page.issues.length === 0) {
       lines.push('');
-      lines.push('- No issues found.');
+      lines.push(`- No issues found for this ${page.entityKind}.`);
       lines.push('');
       continue;
     }
@@ -127,7 +153,7 @@ export function renderHtmlReport(report, title = 'ru-a11y CLI report') {
           ? `${page.issueCount} нарушений`
           : 'Без нарушений';
       return `<a class="toc-item" href="#page-${index + 1}"><span class="toc-url">${escapeHtml(
-        page.url,
+        `${getEntityLabel(page.url)}: ${page.displayUrl}`,
       )}</span><span class="status-badge ${badgeClass}">${escapeHtml(badgeLabel)}</span></a>`;
     })
     .join('');
@@ -148,7 +174,7 @@ export function renderHtmlReport(report, title = 'ru-a11y CLI report') {
       const issuesHtml = page.hasError
         ? `<div class="panel panel-error">${escapeHtml(page.error)}</div>`
         : page.issueCount === 0
-          ? '<div class="panel panel-ok">Для страницы нарушения не найдены.</div>'
+          ? `<div class="panel panel-ok">Для ${page.entityKind === 'file' ? 'файла' : 'страницы'} нарушения не найдены.</div>`
           : page.issues
               .map((issue, issueIndex) => {
                 const severityClass = getSeverityClass(issue.severity);
@@ -175,7 +201,7 @@ export function renderHtmlReport(report, title = 'ru-a11y CLI report') {
       return `
       <section class="page-card" id="page-${pageIndex + 1}">
         <div class="page-head">
-          <h3>${pageIndex + 1}. ${escapeHtml(page.url)}</h3>
+          <h3>${pageIndex + 1}. ${escapeHtml(getEntityLabel(page.url))}: ${escapeHtml(page.displayUrl)}</h3>
           <span class="status-badge ${statusClass}">${escapeHtml(statusLabel)}</span>
         </div>
         <div class="page-meta">
@@ -322,16 +348,18 @@ export function renderHtmlReport(report, title = 'ru-a11y CLI report') {
       <h1>${escapeHtml(title)}</h1>
       <p>Сгенерировано: ${escapeHtml(data.generatedAt)}</p>
       <div class="stats">
-        <div class="stat"><span>Проверено страниц</span><b>${data.scannedPages}</b></div>
+        <div class="stat"><span>Проверено объектов</span><b>${data.scannedPages}</b></div>
+        <div class="stat"><span>Web-страниц</span><b>${data.scannedWebPages}</b></div>
+        <div class="stat"><span>Файлов (ESLint)</span><b>${data.scannedFiles}</b></div>
         <div class="stat"><span>Всего нарушений</span><b>${data.totalIssues}</b></div>
-        <div class="stat"><span>Страниц без нарушений</span><b>${data.pagesWithoutIssues}</b></div>
-        <div class="stat"><span>Страниц с нарушениями</span><b>${data.pagesWithIssues}</b></div>
-        <div class="stat"><span>Страниц с ошибкой аудита</span><b>${data.pagesWithErrors}</b></div>
+        <div class="stat"><span>Объектов без нарушений</span><b>${data.pagesWithoutIssues}</b></div>
+        <div class="stat"><span>Объектов с нарушениями</span><b>${data.pagesWithIssues}</b></div>
+        <div class="stat"><span>Объектов с ошибкой аудита</span><b>${data.pagesWithErrors}</b></div>
       </div>
     </section>
 
     <section class="toc">
-      <h2>Навигация по страницам</h2>
+      <h2>Навигация по объектам проверки</h2>
       <div class="toc-list">${pageToc}</div>
     </section>
 

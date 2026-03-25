@@ -28,6 +28,10 @@ export default function OverlayGostAaBad() {
           </div>
         </header>
         <div className={styles.main}>
+          <section className={styles.sectionBad}>
+            <h2>ESLint marker (file-level)</h2>
+            <a href="https://example.com" className={styles.badLinkSquare} />
+          </section>
           <section className={styles.sectionNeutral}>
             <h2>Что дополнительно проверяет gost-aa vs recommended</h2>
             <ul className={styles.rulesList}>

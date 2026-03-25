@@ -69,4 +69,15 @@ export default defineConfig([
     rules:   ruA11yStrict.rules,
     linterOptions: ruA11yStrict.linterOptions,
   },
+
+  // ── Overlay bad pages: strict (для full CLI-демо с source) ────────────────
+  {
+    files: [
+      'src/pages/overlay/Overlay*Bad.{js,jsx}',
+      'src/pages/overlay/BadContent.{js,jsx}',
+    ],
+    plugins: pluginsWithAlias,
+    rules: ruA11yStrict.rules,
+    linterOptions: ruA11yStrict.linterOptions,
+  },
 ])

@@ -45,6 +45,7 @@ npm run cli:demo:bad
 npm run cli:demo:good
 npm run cli:demo:mixed
 npm run cli:demo:all-routes  # один общий прогон по всем страницам
+npm run cli:demo:all-routes:full # все страницы + ESLint source (file:line)
 
 npm run cli:scan:json    # одиночный mixed-скан в JSON
 npm run cli:report:md    # конвертация JSON -> Markdown для mixed
@@ -71,6 +72,7 @@ npm run cli:demo
 
 Важно: `cli:demo:mixed` специально проверяет только 4 URL из `urls.mixed.txt`.
 Если нужен один общий отчет по всем страницам, используйте `npm run cli:demo:all-routes`.
+Если нужен единый полный отчет (runtime + статический анализ с `file:line`), используйте `npm run cli:demo:all-routes:full`.
 
 Для презентации удобнее открывать `demo/cli/reports/<scenario>/ru-a11y-report.html` в браузере:
 
